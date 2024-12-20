@@ -17,8 +17,7 @@ function(download_bpftool)
     execute_process(COMMAND git reset --hard 09b9e83102eb8ab9e540d36b4559c55f3bcdb95d
                     WORKING_DIRECTORY ${BPTOOL_SOURCE_DIR}/libbpf)
     message(STATUS "Cloned libbpf to ${BPTOOL_SOURCE_DIR}/libbpf")
-    execute_process(COMMAND make CC=${CMAKE_C_COMPILER}
-                                    LLVM_VERSION=19
+    execute_process(COMMAND make LLVM_VERSION=19 LLVM_CONFIG=llvm-config-19
                     WORKING_DIRECTORY ${BPTOOL_SOURCE_DIR}/src)
     message(STATUS "Built bpftool")
     
